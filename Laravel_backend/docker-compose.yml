@@ -20,7 +20,7 @@ services:
         image: mysql:8.0.26
         environment:
             MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: marv_api
+            MYSQL_DATABASE: fullstack_todo
             MYSQL_USER: jony_task
             MYSQL_PASSWORD: passjonytask
         command:
