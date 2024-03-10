@@ -15,9 +15,7 @@ children: React.ReactNode
 	return (
     <html lang="ja">
 		<body>
-			<header>
-				<h1 className="text-3xl font-bold underline">FullStack Todo --feat.Laravel10×Nextjs14</h1>
-			</header>
+			<Header />
 			<main>
 				{children}
 			</main>
