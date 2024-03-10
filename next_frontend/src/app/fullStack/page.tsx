@@ -5,7 +5,9 @@ import InsertTodoArea from "@/components/InsertTodoArea";
 export default function Main() {
     return(
         <>
-            <InsertTodoArea />
+            <div className="flex justify-around">
+                <InsertTodoArea />
+            </div>
         </>
     )
 }
