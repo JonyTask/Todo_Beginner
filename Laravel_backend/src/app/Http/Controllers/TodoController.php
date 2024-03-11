@@ -3,19 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Todo;
 
-class TestController extends Controller
+class TodoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $user = User::find(2);
-        return response()->json([
-            "user" => $user
-        ],201);
+        //
     }
 
     /**
@@ -23,7 +20,12 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Todo::create([
+            "what_to_do" => $request->what_to_do,
+            "prior_level" => $request->prior_level,
+            "deadline" => $request->deadline,
+        ]);
+        return redirect(env('FRONTEND_URL')."/fullStack");
     }
 
     /**
