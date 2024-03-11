@@ -12,7 +12,12 @@ class TodoController extends Controller
      */
     public function index()
     {
-        //
+        $todos = Todo::select('id','what_to_do','prior_level','deadline')->get();
+        return response()->json(
+            [
+                'todos' => $todos,
+            ]
+        );
     }
 
     /**
@@ -47,8 +52,10 @@ class TodoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $todo = Todo::find($request->deleted_id);
+        $todo->delete();
+        return redirect(env('FRONTEND_URL')."/fullStack");
     }
 }

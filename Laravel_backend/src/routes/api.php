@@ -19,4 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/fetch',[TodoController::class,'index']);
 Route::post('/insert',[TodoController::class,'store']);
+Route::post('/delete', [TodoController::class,'destroy']);
