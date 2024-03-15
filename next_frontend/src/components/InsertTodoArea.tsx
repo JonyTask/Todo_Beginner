@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import InputTodo from "./InputTodo"
 import TodoButton from "./TodoButton"
 import PriorRadio from "./PriorRadio";
@@ -9,9 +9,14 @@ export default function InsertTodoArea(){
     const frontURL : string = process.env.NEXT_PUBLIC_BACKEND_URL ?? "";
 
     const [inputTodoState, setTodo] = useState<string>("");
-    const [deadlineState, setDeadline] = useState<string>("");
     const [priorRadioState, setPrior] = useState<number>();
-
+    const [deadlineState, setDeadline] = useState<string>("");
+    const [buttonState, setButtonState] =useState<boolean>(true);
+    useEffect(() => {
+        if( inputTodoState !== "" && priorRadioState !== undefined && deadlineState !== "" ){
+            setButtonState(false);
+        }
+    },[inputTodoState,priorRadioState,deadlineState]);
 
     return(
         <>
@@ -30,7 +35,7 @@ export default function InsertTodoArea(){
                     { deadlineState == "" &&
                         <p className="text-red-600">期限を入力してください</p>
                     }
-                    <TodoButton />
+                    <TodoButton disabledState={buttonState} />
                 </form>
             </div>
         </>
