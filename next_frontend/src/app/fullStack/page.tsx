@@ -1,4 +1,3 @@
-'use client'
 import "../../styles/globals.css";
 import InsertTodoArea from "@/components/InsertTodoArea";
 import TodoListsArea from "@/components/TodoListsArea";

@@ -1,33 +1,19 @@
-import { useState, useEffect } from "react"
+'use client'
 
-type ResponseData = {
-    id: number
-    what_to_do: string
-    prior_level: number
-    deadline: string
-}
+import useFetchTodoAll from "@/features/hooks/useFetchTodoAll";
+import type todoType from "@/features/types/todoType";
+
+const frontURL : string = process.env.NEXT_PUBLIC_BACKEND_URL ?? "";
 
 export default function TodoLists(){
-    const[todos, setTodos] = useState<Array<any>>([]);
-    const frontURL : string = process.env.NEXT_PUBLIC_BACKEND_URL ?? "";
-
-    async function getTodos(){
-        const res = await fetch(
-            `${frontURL}/api/fetch`
-        );
-        const todos = await res.json();
-        setTodos(todos.todos);
-    }
-
-    useEffect(() => {
-        getTodos();
-    }, [])
+    const { data: todos, error} = useFetchTodoAll();
 
     return(
         <>
-            <table className="w-full">
+            {todos &&
+                <table className="w-full">
                 <tbody>
-                    {todos.map((todo: ResponseData) => (
+                    {todos.map((todo: todoType) => (
                         <tr key={ todo.id } className="border-b-2">
                             <td className="py-3">{ todo.what_to_do }</td>
                             <td className="py-3 text-center w-[15%]">{ todo.prior_level }</td>
@@ -42,6 +28,7 @@ export default function TodoLists(){
                     ))}
                 </tbody>
             </table>
+            }
         </>
     )
 }
