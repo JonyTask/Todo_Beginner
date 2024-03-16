@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Todo;
 use App\Http\Requests\TodoRequest;
+use App\Http\Resources\TodoResource;
 
 class TodoController extends Controller
 {
@@ -13,12 +14,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos = Todo::select('id','what_to_do','prior_level','deadline')->get();
-        return response()->json(
-            [
-                'todos' => $todos,
-            ]
-        );
+        return TodoResource::collection(Todo::all());
     }
 
     /**
