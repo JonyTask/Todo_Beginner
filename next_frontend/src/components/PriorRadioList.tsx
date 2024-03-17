@@ -1,6 +1,8 @@
+import React from "react";
+
 export default function PriorRadioList(props:{ prior_level: string, value: number, setFunc : Function}) {
     const { setFunc } = props;
-    const handlePriorValue = (e:any) => setFunc(e.target.value);
+    const handlePriorValue = (e:React.ChangeEvent<HTMLInputElement>) => setFunc(e.target.value);
     return(
         <>
             <li  key={props.value} className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">

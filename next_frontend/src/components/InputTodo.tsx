@@ -1,8 +1,8 @@
-import { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 export default function InputTodo(props: { setTodoState: Dispatch<SetStateAction<string>> }){
     const { setTodoState } = props;
-    const onChangeTodoText = (e: any) => setTodoState(e.target.value);
+    const onChangeTodoText = (e: React.ChangeEvent<HTMLInputElement>) => setTodoState(e.target.value);
     return(
         <>
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Todo</label>

@@ -1,8 +1,8 @@
-import { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 export default function Deadline(props: { setDeadlineState: Dispatch<SetStateAction<string>> }) {
     const { setDeadlineState } = props;
-    const handleDeadline = (e: any) => setDeadlineState(e.target.value);
+    const handleDeadline = (e: React.ChangeEvent<HTMLInputElement>) => setDeadlineState(e.target.value);
 
     return(
         <>
