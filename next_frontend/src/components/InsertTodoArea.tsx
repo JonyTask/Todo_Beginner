@@ -8,7 +8,7 @@ import Deadline from "./Deadline";
 
 export default function InsertTodoArea(){
     const Todo_insert_title : string = "Todo追加欄";
-    const frontURL : string = process.env.NEXT_PUBLIC_BACKEND_URL ?? "";
+    const frontURL : string = process.env.NEXT_PUBLIC_API_URL ?? "";
 
     const [inputTodoState, setTodo] = useState<string>("");
     const [priorRadioState, setPrior] = useState<number>();

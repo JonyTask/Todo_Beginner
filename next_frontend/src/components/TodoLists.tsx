@@ -3,7 +3,7 @@
 import useFetchTodoAll from "@/features/hooks/useFetchTodoAll";
 import type todoType from "@/features/types/todoType";
 
-const frontURL : string = process.env.NEXT_PUBLIC_BACKEND_URL ?? "";
+const frontURL : string = process.env.NEXT_PUBLIC_API_URL ?? "";
 
 export default function TodoLists(){
     const { data: todos, error} = useFetchTodoAll();

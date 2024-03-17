@@ -2,7 +2,7 @@ import type todoType from "../types/todoType"
 import { Http } from "../lib/api-client"
 import type { AxiosResponse } from "axios"
 
-const frontURL : string = process.env.NEXT_PUBLIC_BACKEND_URL ?? "";
+const frontURL : string = process.env.NEXT_PUBLIC_API_URL ?? "";
 
 export default function fetchTodoAll(): Promise<todoType[]>{
     return Http.axios()
